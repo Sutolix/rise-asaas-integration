@@ -48,7 +48,11 @@ class Asaas_settings extends Security_Controller {
 
     function save() {
 
-        $this->Asaas_settings_model->save_setting("asaas_token", $this->request->getPost("asaas_token"));
+        $this->Asaas_settings_model->save_setting("asaas_token_type", $this->request->getPost("asaas_token_type"));
+        $this->Asaas_settings_model->save_setting("asaas_production_token", $this->request->getPost("asaas_production_token"));
+        $this->Asaas_settings_model->save_setting("asaas_sandbox_token", $this->request->getPost("asaas_sandbox_token"));
+        
+        
         $this->Asaas_settings_model->save_setting("asaas_payment_method", $this->request->getPost("asaas_payment_method"));
         $this->Asaas_settings_model->save_setting("asaas_payment_note", $this->request->getPost("asaas_payment_note"));
 

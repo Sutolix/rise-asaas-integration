@@ -52,7 +52,7 @@ class Asaas extends App_Controller
 
     {
 
-        $asaas_token = get_asaas_setting('asaas_token');
+        $asaas_token = get_asaas_token();
 
         $authToken = $this->request->getHeaderLine('asaas-access-token');
 
@@ -227,7 +227,7 @@ class Asaas extends App_Controller
 
                 $Invoices_model = new Invoices_model();
 
-                $Invoices_model->update_invoice_status($invoice->id, $status);
+                $Invoices_model->update_invoice_status($invoice->id);
 
 
 

@@ -19,19 +19,62 @@
                 <div class="card-header">
                     <h4>Configurações da integração</h4>
                 </div>
+                
+                <div class="m-4">
+                    <div class="bg-primary mb-0 p-3">
+                      Endpoint do webhook: <b><?php echo  _get_uri() . '/' . ASAAS_WEBHOOK_ENDPOINT ?></b>
+                    </div>
+                </div>
 
                 <?php echo form_open(get_uri("asaas_settings/save"), array("id" => "asaas-settings-form", "class" => "general-form dashed-row", "role" => "form")); ?>
-
+                
                 <div class="card-body post-dropzone">
                     <div class="form-group">
                         <div class="row">
-                            <label for="asaas_token" class=" col-md-3">authToken: </label>
+                            <label for="asaas_token_type" class=" col-md-3">Tipo de token: </label>
+                            <div class=" col-md-9">
+                                <?php
+                                echo form_dropdown(array(
+                                    "id"        => "asaas_token_type",
+                                    "name"      => "asaas_token_type",
+                                    "class"     => "form-control",
+                                    "selected"  => get_asaas_setting("asaas_token_type"),
+                                    "options"   => [
+                                        'production'    => 'Produção',
+                                        'sandbox'       => 'Sandbox',
+                                    ],
+                                ));
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="asaas_production_token" class=" col-md-3">Token de produção: </label>
                             <div class=" col-md-9">
                                 <?php
                                 echo form_input(array(
-                                    "id" => "asaas_token",
-                                    "name" => "asaas_token",
-                                    "value" => get_asaas_setting("asaas_token"),
+                                    "id" => "asaas_production_token",
+                                    "name" => "asaas_production_token",
+                                    "value" => get_asaas_setting("asaas_production_token"),
+                                    "class" => "form-control",
+                                    "placeholder" => "Token de autenticação do webhook do Asaas"
+                                ));
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="asaas_sandbox_token" class=" col-md-3">Token de sandbox: </label>
+                            <div class=" col-md-9">
+                                <?php
+                                echo form_input(array(
+                                    "id" => "asaas_sandbox_token",
+                                    "name" => "asaas_sandbox_token",
+                                    "value" => get_asaas_setting("asaas_sandbox_token"),
                                     "class" => "form-control",
                                     "placeholder" => "Token de autenticação do webhook do Asaas"
                                 ));

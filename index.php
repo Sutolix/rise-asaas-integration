@@ -14,15 +14,15 @@ const ASAAS_WEBHOOK_ENDPOINT = 'asaas_payments';
 
   Plugin Name: Asaas
 
-  Description: It's a asaas plugin.
+  Description: Uma integração com o banco Asaas.
 
   Version: 1.0
 
   Requires at least: 3.0
 
-  Author: Author Name
+  Author: Tiago Reis
 
-  Author URL: https://author_url.asaas
+  Author URL: https://hookod.com
 
  */
 
@@ -138,7 +138,11 @@ register_installation_hook("Asaas", function ($item_purchase_code) {
 
     $sql_query = "INSERT INTO `" . $dbprefix . "asaas_settings` (`setting_name`, `setting_value`, `deleted`) VALUES 
 
-                ('asaas_token', '', 0),
+                ('asaas_token_type', 'sandbox', 0),
+                
+                ('asaas_production_token', '', 0),
+                
+                ('asaas_sandbox_token', '', 0),
 
                 ('asaas_payment_method', '', 0),
 
